@@ -6,7 +6,139 @@
             "description": "Tests if the compiler allows keywords to be used as identifiers.",
             "scripts": [
                 {
-                    "file": "keywords-as-identifiers/keyword_as.psc",
+                    "file": "keywords-as-identifiers/keyword_As.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Auto.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_AutoReadOnly.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Bool.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Else.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_ElseIf.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndEvent.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndFunction.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndIf.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndProperty.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndState.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_EndWhile.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Event.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Extends.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_False.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Float.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Function.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Global.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_If.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Import.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Int.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Length.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Native.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_New.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_None.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Parent.psc",
+                    "expectedResult": "SUCCESS"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Property.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Return.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_ScriptName.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_Self.psc",
+                    "expectedResult": "SUCCESS"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_State.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_String.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_True.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
+                    "file": "keywords-as-identifiers/keyword_While.psc",
                     "expectedResult": "FAILURE"
                 }
             ]
