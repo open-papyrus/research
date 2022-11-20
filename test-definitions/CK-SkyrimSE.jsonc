@@ -1,0 +1,25 @@
+{
+    "description": "Tests the Papyrus Compiler that comes with the Skyrim Special Edition Creation Kit",
+    "tests": [
+        {
+            "name": "Keywords as Identifiers",
+            "description": "Tests if the compiler allows keywords to be used as identifiers.",
+            "scripts": [
+                {
+                    "file": "keywords-as-identifiers/keyword_as.psc",
+                    "expectedResult": "FAILURE"
+                }
+            ]
+        },
+        {
+            "name": "ScriptName is file name",
+            "description": "Tests if the compiler allows script names to differ from the file name.",
+            "scripts": [
+                {
+                    "file": "other/script_name_is_filename.psc",
+                    "expectedResult": "FAILURE"
+                }
+            ]
+        }
+    ]
+}

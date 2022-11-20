@@ -1,0 +1,22 @@
+{
+    "name": "research",
+    "version": "1.0.0",
+    "description": "This repository is for researching and testing various concepts surrounding Papyrus.",
+    "main": "index.js",
+    "scripts": {
+        "validate": "ajv test -s test-definitions/schema.json -d \"test-definitions/*.jsonc\" --spec=draft7 --valid"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/open-papyrus/research.git"
+    },
+    "author": "erri120 <erri120@protonmail.com> (https://github.com/erri120)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/open-papyrus/research/issues"
+    },
+    "homepage": "https://github.com/open-papyrus/research#readme",
+    "devDependencies": {
+        "ajv-cli": "^5.0.0"
+    }
+}

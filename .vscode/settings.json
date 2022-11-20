@@ -1,4 +1,19 @@
 {
     "ltex.language": "en-US",
-    "ltex.enabled": ["markdown"]
+    "ltex.enabled": [
+        "markdown"
+    ],
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/test-definitions/*.jsonc"
+            ],
+            "url": "/test-definitions/schema.json"
+        }
+    ],
+    "rust-analyzer.checkOnSave.enable": true,
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
 }

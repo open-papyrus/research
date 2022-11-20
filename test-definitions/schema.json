@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "open-papyrus-research-test-definition-schema",
+    "title": "Schema for test definitions",
+    "type": "object",
+    "properties": {
+        "description": {
+            "description": "Description of the definition",
+            "type": "string"
+        },
+        "tests": {
+            "description": "Tests to run",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Name of the test",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the test",
+                        "type": "string"
+                    },
+                    "scripts": {
+                        "description": "Scripts to test",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "file": {
+                                    "description": "File to test",
+                                    "type": "string",
+                                    "pattern": "^(test-scripts\\/){0}.+\\.psc$"
+                                },
+                                "expectedResult": {
+                                    "description": "The expected outcome",
+                                    "type": "string",
+                                    "enum": [
+                                        "SUCCESS",
+                                        "FAILURE"
+                                    ]
+                                }
+                            },
+                            "required": ["file", "expectedResult"]
+                        },
+                        "minItems": 1
+                    }
+                },
+                "required": ["scripts"]
+            }
+        }
+    },
+    "required": ["description", "tests"]
+}

@@ -1,7 +1,8 @@
 {
     "recommendations": [
         "EditorConfig.EditorConfig",
-        "valentjn.vscode-ltex"
+        "valentjn.vscode-ltex",
+        "rust-lang.rust-analyzer"
     ],
     "unwantedRecommendations": [
         "yzhang.markdown-all-in-one",
