@@ -1,0 +1,46 @@
+name: Rust
+
+on:
+    push:
+        branches: ["master"]
+        paths:
+            - "test-runner/**"
+    pull_request:
+        branches: ["master"]
+        paths:
+            - "test-runner/**"
+    workflow_dispatch:
+
+env:
+    CARGO_TERM_COLOR: always
+
+jobs:
+    clippy:
+        name: Clippy
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Install Toolchain
+              uses: actions-rs/toolchain@v1
+              with:
+                  profile: minimal
+                  toolchain: nightly
+                  override: true
+                  components: clippy
+
+            - name: Cache cargo dependencies
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      ~/.cargo/registry/index
+                      ~/.cargo/registry/cache
+                      ~/.cargo/git/db
+                  key: cargo-deps-${{ hashFiles('**/Cargo.lock') }}
+
+            - name: Run clippy
+              uses: actions-rs/clippy-check@v1
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  args: --all-features --locked --manifest-path ./test-runner/Cargo.toml
