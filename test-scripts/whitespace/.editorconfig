@@ -1,0 +1,28 @@
+[*.psc]
+charset = utf-8
+end_of_line = crlf
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[whitespace_1.psc]
+end_of_line = lf
+
+[whitespace_2.psc]
+end_of_line = crlf
+
+[whitespace_3.psc]
+charset = utf-8
+
+[whitespace_4.psc]
+charset = utf-8-bom
+
+[whitespace_5.psc]
+charset = utf-16le
+
+[whitespace_6.psc]
+charset = utf-16be
+
+[whitespace_8.psc]
+tab_width = unset
+indent_size = unset
+indent_style = unset

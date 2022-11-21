@@ -343,6 +343,52 @@
                     "note": "a_"
                 }
             ]
+        },
+        {
+            "name": "Whitespace, Line Endings and Encoding",
+            "description": "Tests what kind of whitespaces, line endings and encodings the compiler allows",
+            "scripts": [
+                {
+                    "file": "whitespace/whitespace_1.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "File uses LF line endings"
+                },
+                {
+                    "file": "whitespace/whitespace_2.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "File uses CRLF line endings"
+                },
+                {
+                    "file": "whitespace/whitespace_3.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "utf-8"
+                },
+                {
+                    "file": "whitespace/whitespace_4.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "utf-8-bom"
+                },
+                {
+                    "file": "whitespace/whitespace_5.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "utf-16-le"
+                },
+                {
+                    "file": "whitespace/whitespace_6.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "utf-16-be"
+                },
+                {
+                    "file": "whitespace/whitespace_7.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Using U+0020 (space)"
+                },
+                {
+                    "file": "whitespace/whitespace_8.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Using U+0009 (horizontal tab)"
+                }
+            ]
         }
     ]
 }

@@ -1,0 +1,4 @@
+*.psc text eol=crlf
+
+whitespace_1.psc text eol=lf
+whitespace_2.psc text eol=crlf
