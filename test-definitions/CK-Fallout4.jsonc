@@ -277,6 +277,72 @@
                     "note": "Defined as a Keyword"
                 }
             ]
+        },
+        {
+            "name": "Identifiers",
+            "description": "Tests what identifiers are allowed by the compiler",
+            "scripts": [
+                {
+                    "file": "identifiers/identifier_1.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "a"
+                },
+                {
+                    "file": "identifiers/identifier_2.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "0"
+                },
+                {
+                    "file": "identifiers/identifier_3.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "_"
+                },
+                {
+                    "file": "identifiers/identifier_4.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "*"
+                },
+                {
+                    "file": "identifiers/identifier_5.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "ä"
+                },
+                {
+                    "file": "identifiers/identifier_6.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "あ"
+                },
+                {
+                    "file": "identifiers/identifier_7.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "_a"
+                },
+                {
+                    "file": "identifiers/identifier_8.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "_0"
+                },
+                {
+                    "file": "identifiers/identifier_9.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "______________________________"
+                },
+                {
+                    "file": "identifiers/identifier_10.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "a-b"
+                },
+                {
+                    "file": "identifiers/identifier_11.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "a_b"
+                },
+                {
+                    "file": "identifiers/identifier_12.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "a_"
+                }
+            ]
         }
     ]
 }
