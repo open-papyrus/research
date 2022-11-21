@@ -394,6 +394,67 @@
                     "note": "Tests if single-line comments are allowed after line terminators"
                 }
             ]
+        },
+        {
+            "name": "Comments",
+            "description": "Tests comments",
+            "scripts": [
+                {
+                    "file": "comments/comment_1.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Single-line Comment"
+                },
+                {
+                    "file": "comments/comment_2.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Multi-line Comment"
+                },
+                {
+                    "file": "comments/comment_3.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Statement after Multi-line Comment"
+                },
+                {
+                    "file": "comments/comment_4.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Statement before Multi-line Comment"
+                },
+                {
+                    "file": "comments/comment_5.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Script Definition"
+                },
+                {
+                    "file": "comments/comment_6.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Property Definition"
+                },
+                {
+                    "file": "comments/comment_7.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Group Definition"
+                },
+                {
+                    "file": "comments/comment_8.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Struct Member Definition"
+                },
+                {
+                    "file": "comments/comment_9.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Function Definition"
+                },
+                {
+                    "file": "comments/comment_10.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment after Event Definition"
+                },
+                {
+                    "file": "comments/comment_11.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Documentation Comment after Variable Definition"
+                }
+            ]
         }
     ]
 }

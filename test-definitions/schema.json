@@ -51,7 +51,7 @@
                         "minItems": 1
                     }
                 },
-                "required": ["scripts"]
+                "required": ["name", "description", "scripts"]
             }
         }
     },
