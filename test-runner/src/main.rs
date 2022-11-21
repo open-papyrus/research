@@ -177,7 +177,7 @@ fn compile_script(
 
     let process_output = std::process::Command::new(compiler_path)
         .stdin(std::process::Stdio::null())
-        .arg(script_name)
+        .arg(&script_name)
         .arg("-o=out")
         .arg(format!(
             "-i={};{}",
@@ -193,7 +193,10 @@ fn compile_script(
     let test_success = result_success == expected_success;
 
     if !test_success {
-        println!("Test failed");
+        println!(
+            "Test failed for {}: expected ({}) != actual ({})",
+            script_name, expected_success, result_success
+        );
         io::stdout().write_all(&process_output.stdout).unwrap();
         io::stderr().write_all(&process_output.stderr).unwrap();
     }
