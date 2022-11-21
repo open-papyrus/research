@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -13,11 +15,20 @@ pub struct Test {
     pub scripts: Vec<Script>,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone, Copy)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum ScriptResult {
     Success,
     Failure,
+}
+
+impl Display for ScriptResult {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ScriptResult::Success => write!(f, "SUCCESS"),
+            ScriptResult::Failure => write!(f, "FAILURE"),
+        }
+    }
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]

@@ -1,16 +1,15 @@
-use std::io::{self, Write};
-use std::path::{Path, PathBuf};
-use std::{fs, thread};
+use std::fs;
 
 use anyhow::{anyhow, Context, Result};
 use clap::Parser;
-use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
-use json::TestDefinition;
+use compiler::CreationKitCompiler;
 
 use crate::args::Args;
 
 mod args;
+mod compiler;
 mod json;
+mod runner;
 
 fn main() {
     match run() {
@@ -56,148 +55,7 @@ fn run() -> Result<()> {
     let test_definition: json::TestDefinition = serde_json::from_str(&file_contents)
         .with_context(|| format!("Invalid JSON in {}", args.definition.display()))?;
 
-    run_test_definition(
-        test_definition,
-        args.scripts_dir,
-        args.compiler_path,
-        args.import,
-        args.flag,
-    )
-}
+    let compiler = CreationKitCompiler::new(args.compiler_path, args.import, args.flag);
 
-fn run_test_definition(
-    test_definition: TestDefinition,
-    scripts_dir: PathBuf,
-    compiler_path: PathBuf,
-    import_dir: PathBuf,
-    flag_name: String,
-) -> Result<()> {
-    println!("------------ Test Definition ------------");
-    println!("{}", test_definition.description);
-
-    for test in test_definition.tests {
-        run_test(
-            &test,
-            scripts_dir.clone(),
-            compiler_path.clone(),
-            import_dir.clone(),
-            flag_name.clone(),
-        );
-    }
-
-    Ok(())
-}
-
-fn run_test(
-    test: &json::Test,
-    scripts_dir: PathBuf,
-    compiler_path: PathBuf,
-    import_dir: PathBuf,
-    flag_name: String,
-) {
-    let count = thread::available_parallelism()
-        .map(|x| x.get())
-        .unwrap_or(1_usize);
-
-    let mut chunk_size = test.scripts.len() / count;
-    if chunk_size == 0 {
-        chunk_size = 1;
-    }
-
-    let chunks: Vec<&[json::Script]> = test.scripts.chunks(chunk_size).collect();
-
-    let multi_progress = MultiProgress::new();
-
-    let mut handles = vec![];
-
-    let spinner_style = ProgressStyle::with_template("{prefix:.bold.dim} {spinner} {wide_msg}")
-        .unwrap()
-        .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ");
-
-    for chunk in chunks {
-        let scripts_dir = scripts_dir.clone();
-        let compiler_path = compiler_path.clone();
-        let import_dir = import_dir.clone();
-        let flag_name = flag_name.clone();
-        let chunk = chunk.to_vec();
-
-        let pb = multi_progress.add(ProgressBar::new(chunk.len() as u64));
-        pb.set_style(spinner_style.clone());
-
-        handles.push(thread::spawn(move || {
-            let scripts_dir = scripts_dir;
-            let compiler_path = compiler_path;
-            let import_dir = import_dir;
-            let flag_name = flag_name;
-
-            for script in chunk {
-                pb.set_message(script.file.to_string());
-                pb.inc(1);
-                compile_script(
-                    &script,
-                    &scripts_dir,
-                    &compiler_path,
-                    &import_dir,
-                    &flag_name,
-                );
-            }
-
-            pb.finish_with_message("waiting...");
-        }));
-    }
-
-    for handle in handles {
-        handle.join().unwrap();
-    }
-
-    multi_progress.clear().unwrap();
-}
-
-fn compile_script(
-    script: &json::Script,
-    scripts_dir: &Path,
-    compiler_path: &Path,
-    import_dir: &Path,
-    flag_name: &str,
-) {
-    let script_path = scripts_dir.join(&script.file);
-    if !script_path.exists() {
-        println!("Script {} does not exist!", script_path.display());
-        return;
-    }
-
-    let script_name = script_path
-        .file_stem()
-        .unwrap()
-        .to_str()
-        .unwrap()
-        .to_owned();
-
-    let script_import_dir = script_path.parent().unwrap().to_owned();
-
-    let process_output = std::process::Command::new(compiler_path)
-        .stdin(std::process::Stdio::null())
-        .arg(&script_name)
-        .arg("-o=out")
-        .arg(format!(
-            "-i={};{}",
-            script_import_dir.display(),
-            import_dir.display()
-        ))
-        .arg(format!("-f={}", flag_name))
-        .output()
-        .unwrap();
-
-    let result_success = process_output.status.success();
-    let expected_success = script.expected_result == json::ScriptResult::Success;
-    let test_success = result_success == expected_success;
-
-    if !test_success {
-        println!(
-            "Test failed for {}: expected ({}) != actual ({})",
-            script_name, expected_success, result_success
-        );
-        io::stdout().write_all(&process_output.stdout).unwrap();
-        io::stderr().write_all(&process_output.stderr).unwrap();
-    }
+    runner::run_test_definition(test_definition, args.scripts_dir, Box::new(compiler))
 }
