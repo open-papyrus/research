@@ -11,4 +11,10 @@ pub struct Args {
 
     #[arg(long)]
     pub compiler_path: PathBuf,
+
+    #[arg(long)]
+    pub import: PathBuf,
+
+    #[arg(long)]
+    pub flag: String,
 }

@@ -153,7 +153,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Parent.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Is not reserved in Skyrim (see https://open-papyrus.github.io/docs/Papyrus_Language_Reference/Lexial_structure/Keywords.html)"
+                    "note": "Is not reserved (see https://open-papyrus.github.io/docs/Papyrus_Language_Reference/Lexial_structure/Keywords.html)"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_Property.psc",
@@ -175,7 +175,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Self.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Is not reserved in Skyrim (see https://open-papyrus.github.io/docs/Papyrus_Language_Reference/Lexial_structure/Keywords.html)"
+                    "note": "Is not reserved (see https://open-papyrus.github.io/docs/Papyrus_Language_Reference/Lexial_structure/Keywords.html)"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_State.psc",

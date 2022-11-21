@@ -43,31 +43,58 @@ fn run() -> Result<()> {
         ));
     }
 
+    if !args.import.exists() {
+        return Err(anyhow!(
+            "Directory {} does not exist!",
+            args.import.display()
+        ));
+    }
+
     let file_contents = fs::read_to_string(&args.definition)
         .with_context(|| format!("Unable to read file {}", args.definition.display()))?;
 
     let test_definition: json::TestDefinition = serde_json::from_str(&file_contents)
         .with_context(|| format!("Invalid JSON in {}", args.definition.display()))?;
 
-    run_test_definition(test_definition, args.scripts_dir, args.compiler_path)
+    run_test_definition(
+        test_definition,
+        args.scripts_dir,
+        args.compiler_path,
+        args.import,
+        args.flag,
+    )
 }
 
 fn run_test_definition(
     test_definition: TestDefinition,
     scripts_dir: PathBuf,
     compiler_path: PathBuf,
+    import_dir: PathBuf,
+    flag_name: String,
 ) -> Result<()> {
     println!("------------ Test Definition ------------");
     println!("{}", test_definition.description);
 
     for test in test_definition.tests {
-        run_test(&test, scripts_dir.clone(), compiler_path.clone());
+        run_test(
+            &test,
+            scripts_dir.clone(),
+            compiler_path.clone(),
+            import_dir.clone(),
+            flag_name.clone(),
+        );
     }
 
     Ok(())
 }
 
-fn run_test(test: &json::Test, scripts_dir: PathBuf, compiler_path: PathBuf) {
+fn run_test(
+    test: &json::Test,
+    scripts_dir: PathBuf,
+    compiler_path: PathBuf,
+    import_dir: PathBuf,
+    flag_name: String,
+) {
     let count = thread::available_parallelism()
         .map(|x| x.get())
         .unwrap_or(1_usize);
@@ -85,6 +112,8 @@ fn run_test(test: &json::Test, scripts_dir: PathBuf, compiler_path: PathBuf) {
     for chunk in chunks {
         let scripts_dir = scripts_dir.clone();
         let compiler_path = compiler_path.clone();
+        let import_dir = import_dir.clone();
+        let flag_name = flag_name.clone();
         let chunk = chunk.to_vec();
 
         let pb = multi_progress.add(ProgressBar::new(chunk.len() as u64));
@@ -93,11 +122,19 @@ fn run_test(test: &json::Test, scripts_dir: PathBuf, compiler_path: PathBuf) {
         handles.push(thread::spawn(move || {
             let scripts_dir = scripts_dir;
             let compiler_path = compiler_path;
+            let import_dir = import_dir;
+            let flag_name = flag_name;
 
             for script in chunk {
                 pb.set_message(script.file.to_string());
                 pb.inc(1);
-                compile_script(&script, &scripts_dir, &compiler_path);
+                compile_script(
+                    &script,
+                    &scripts_dir,
+                    &compiler_path,
+                    &import_dir,
+                    &flag_name,
+                );
             }
 
             pb.finish_with_message("waiting...");
@@ -111,7 +148,13 @@ fn run_test(test: &json::Test, scripts_dir: PathBuf, compiler_path: PathBuf) {
     multi_progress.clear().unwrap();
 }
 
-fn compile_script(script: &json::Script, scripts_dir: &Path, compiler_path: &Path) {
+fn compile_script(
+    script: &json::Script,
+    scripts_dir: &Path,
+    compiler_path: &Path,
+    import_dir: &Path,
+    flag_name: &str,
+) {
     let script_path = scripts_dir.join(&script.file);
     if !script_path.exists() {
         println!("Script {} does not exist!", script_path.display());
@@ -125,13 +168,18 @@ fn compile_script(script: &json::Script, scripts_dir: &Path, compiler_path: &Pat
         .unwrap()
         .to_owned();
 
-    let import_dir = script_path.parent().unwrap().to_owned();
+    let script_import_dir = script_path.parent().unwrap().to_owned();
 
     let process_output = std::process::Command::new(compiler_path)
         .stdin(std::process::Stdio::null())
         .arg(script_name)
         .arg("-o=out")
-        .arg(format!("-i={}", import_dir.display()))
+        .arg(format!(
+            "-i={};{}",
+            script_import_dir.display(),
+            import_dir.display()
+        ))
+        .arg(format!("-f={}", flag_name))
         .output()
         .unwrap();
 
