@@ -40,6 +40,10 @@
                                         "SUCCESS",
                                         "FAILURE"
                                     ]
+                                },
+                                "note": {
+                                    "description": "Note",
+                                    "type": "string"
                                 }
                             },
                             "required": ["file", "expectedResult"]

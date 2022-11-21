@@ -26,6 +26,10 @@
                     "expectedResult": "FAILURE"
                 },
                 {
+                    "file": "keywords-as-identifiers/keyword_Const.psc",
+                    "expectedResult": "FAILURE"
+                },
+                {
                     "file": "keywords-as-identifiers/keyword_CustomEvent.psc",
                     "expectedResult": "FAILURE"
                 },
