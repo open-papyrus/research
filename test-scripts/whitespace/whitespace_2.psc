@@ -1,3 +1,4 @@
 ScriptName whitespace_2
 
-int x = 0
+int x = \
+0
