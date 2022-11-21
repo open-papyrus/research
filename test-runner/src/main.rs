@@ -99,7 +99,12 @@ fn run_test(
         .map(|x| x.get())
         .unwrap_or(1_usize);
 
-    let chunks: Vec<&[json::Script]> = test.scripts.chunks(count).collect();
+    let mut chunk_size = test.scripts.len() / count;
+    if chunk_size == 0 {
+        chunk_size = 1;
+    }
+
+    let chunks: Vec<&[json::Script]> = test.scripts.chunks(chunk_size).collect();
 
     let multi_progress = MultiProgress::new();
 
