@@ -20,7 +20,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_BetaOnly.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_Bool.psc",
@@ -29,22 +29,22 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Const.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_CustomEvent.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_CustomEventName.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_DebugOnly.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_Else.psc",
@@ -65,7 +65,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_EndGroup.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_EndIf.psc",
@@ -82,7 +82,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_EndStruct.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_EndWhile.psc",
@@ -115,7 +115,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Group.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_If.psc",
@@ -132,7 +132,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Is.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_Length.psc",
@@ -166,7 +166,7 @@
                 {
                     "file": "keywords-as-identifiers/keyword_ScriptEventName.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_ScriptName.psc",
@@ -188,12 +188,12 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Struct.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_StructVarName.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_True.psc",
@@ -202,11 +202,82 @@
                 {
                     "file": "keywords-as-identifiers/keyword_Var.psc",
                     "expectedResult": "SUCCESS",
-                    "note": "Fallout 4 keyword"
+                    "note": "Added in Fallout 4"
                 },
                 {
                     "file": "keywords-as-identifiers/keyword_While.psc",
                     "expectedResult": "FAILURE"
+                }
+            ]
+        },
+        {
+            "name": "Flags as Identifiers",
+            "description": "Tests if the compiler allows flags to be used as identifers.",
+            "scripts": [
+                {
+                    "file": "flags-as-identifiers/flag_Auto.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_AutoReadOnly.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_BetaOnly.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Collapsed.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_CollapsedOnBase.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_CollapsedOnRef.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Conditional.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in TESV_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Const.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_DebugOnly.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Default.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Hidden.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in TESV_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Mandatory.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Added in Fallout 4"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Native.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
                 }
             ]
         },

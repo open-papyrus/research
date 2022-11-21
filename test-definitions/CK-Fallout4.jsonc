@@ -198,6 +198,77 @@
             ]
         },
         {
+            "name": "Flags as Identifiers",
+            "description": "Tests if the compiler allows flags to be used as identifers.",
+            "scripts": [
+                {
+                    "file": "flags-as-identifiers/flag_Auto.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_AutoReadOnly.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_BetaOnly.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Collapsed.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_CollapsedOnBase.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_CollapsedOnRef.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Conditional.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Const.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_DebugOnly.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Default.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Hidden.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Mandatory.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Defined in Institute_Papyrus_Flags.flg"
+                },
+                {
+                    "file": "flags-as-identifiers/flag_Native.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Defined as a Keyword"
+                }
+            ]
+        },
+        {
             "name": "ScriptName is file name",
             "description": "Tests if the compiler allows script names to differ from the file name.",
             "scripts": [
