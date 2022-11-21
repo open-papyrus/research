@@ -387,6 +387,11 @@
                     "file": "whitespace/whitespace_8.psc",
                     "expectedResult": "SUCCESS",
                     "note": "Using U+0009 (horizontal tab)"
+                },
+                {
+                    "file": "whitespace/whitespace_9.psc",
+                    "expectedResult": "FAILURE",
+                    "note": "Tests if single-line comments are allowed after line terminators"
                 }
             ]
         }
