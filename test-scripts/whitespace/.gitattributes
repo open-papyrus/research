@@ -2,3 +2,6 @@
 
 whitespace_1.psc text eol=lf
 whitespace_2.psc text eol=crlf
+
+whitespace_5.psc binary
+whitespace_6.psc binary
