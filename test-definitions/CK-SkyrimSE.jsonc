@@ -443,29 +443,29 @@
                     "note": "Documentation Comment after Property Definition"
                 },
                 {
-                    "file": "comments/comment_7.psc",
-                    "expectedResult": "SUCCESS",
-                    "note": "Documentation Comment after Group Definition"
-                },
-                {
-                    "file": "comments/comment_8.psc",
-                    "expectedResult": "SUCCESS",
-                    "note": "Documentation Comment after Struct Member Definition"
-                },
-                {
                     "file": "comments/comment_9.psc",
                     "expectedResult": "SUCCESS",
                     "note": "Documentation Comment after Function Definition"
                 },
                 {
                     "file": "comments/comment_10.psc",
-                    "expectedResult": "SUCCESS",
+                    "expectedResult": "FAILURE",
                     "note": "Documentation Comment after Event Definition"
                 },
                 {
                     "file": "comments/comment_11.psc",
-                    "expectedResult": "SUCCESS",
+                    "expectedResult": "FAILURE",
                     "note": "Documentation Comment after Variable Definition"
+                },
+                {
+                    "file": "comments/comment_12.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment not immediatly after the Script Header"
+                },
+                {
+                    "file": "comments/comment_13.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment not immediatly after Property Definition"
                 }
             ]
         }

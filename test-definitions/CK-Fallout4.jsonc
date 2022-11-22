@@ -453,6 +453,16 @@
                     "file": "comments/comment_11.psc",
                     "expectedResult": "FAILURE",
                     "note": "Documentation Comment after Variable Definition"
+                },
+                {
+                    "file": "comments/comment_12.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment not immediatly after the Script Header"
+                },
+                {
+                    "file": "comments/comment_13.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment not immediatly after Property Definition"
                 }
             ]
         }
