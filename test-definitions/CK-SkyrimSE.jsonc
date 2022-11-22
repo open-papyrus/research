@@ -448,8 +448,8 @@
                     "note": "Documentation Comment after Function Definition"
                 },
                 {
-                    "file": "comments/comment_10.psc",
-                    "expectedResult": "FAILURE",
+                    "file": "comments/comment_10_Skyrim.psc",
+                    "expectedResult": "SUCCESS",
                     "note": "Documentation Comment after Event Definition"
                 },
                 {
