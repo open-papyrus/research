@@ -48,6 +48,7 @@ impl Compiler for CreationKitCompiler {
         let process_output = Command::new(&self.compiler_path)
             .stdin(Stdio::null())
             .arg(script_name)
+            .arg("-keepasm")
             .arg(format!(
                 "-i={};{}",
                 &self.base_scripts_dir.display(),
@@ -59,13 +60,15 @@ impl Compiler for CreationKitCompiler {
             .with_context(|| format!("Unable to compile file {}", script_path.display()))?;
 
         let success = process_output.status.success();
-        let output = String::from_utf8(process_output.stdout).with_context(|| {
-            format!(
-                "Unable to convert data written to stdout to UTF-8 String during compilation of {}",
-                script_path.display()
-            )
-        })?;
 
-        Ok(CompileResult { success, output })
+        // let stdout = unsafe { String::from_utf8_unchecked(process_output.stdout) };
+        let stderr = unsafe { String::from_utf8_unchecked(process_output.stderr) };
+
+        // stderr.push_str(&stdout);
+
+        Ok(CompileResult {
+            success,
+            output: stderr,
+        })
     }
 }
