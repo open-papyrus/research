@@ -466,6 +466,11 @@
                     "file": "comments/comment_13.psc",
                     "expectedResult": "SUCCESS",
                     "note": "Documentation Comment not immediatly after Property Definition"
+                },
+                {
+                    "file": "comments/comment_14.psc",
+                    "expectedResult": "SUCCESS",
+                    "note": "Documentation Comment preceeded by other Comments."
                 }
             ]
         }
